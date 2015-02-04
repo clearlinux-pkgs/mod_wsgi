@@ -1,0 +1,1 @@
+py.test-2.7 --verbose; py.test-3.4 --verbose;

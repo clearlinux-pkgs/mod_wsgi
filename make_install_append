@@ -1,0 +1,2 @@
+install -m 0755 -d %{buildroot}/usr/share/defaults/httpd/conf.modules.d/
+install -p -D -m 644 etc/httpd/conf.d/wsgi.conf  %{buildroot}/usr/share/defaults/httpd/conf.modules.d/

@@ -1,0 +1,29 @@
+From a95e75b81e77d5252be1b2edd25496bb4ba5f5b1 Mon Sep 17 00:00:00 2001
+From: "Munoz, Obed N" <obed.n.munoz@intel.com>
+Date: Wed, 8 Apr 2015 10:26:03 -0500
+Subject: [PATCH] default WSGI configuration for httpd
+
+Signed-off-by: Munoz, Obed N <obed.n.munoz@intel.com>
+---
+ etc/httpd/conf.d/wsgi.conf | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+ create mode 100644 etc/httpd/conf.d/wsgi.conf
+
+diff --git a/etc/httpd/conf.d/wsgi.conf b/etc/httpd/conf.d/wsgi.conf
+new file mode 100644
+index 0000000..126d442
+--- /dev/null
++++ b/etc/httpd/conf.d/wsgi.conf
+@@ -0,0 +1,8 @@
++# WSGI Module Default Global Settings
++
++<IfModule !module_wsgi>
++    # If the WSGI module has NOT already been loaded, load it
++    LoadModule wsgi_module lib/httpd/modules/mod_wsgi.so
++</IfModule>
++
++WSGISocketPrefix /run/httpd/wsgi
+\ No newline at end of file
+-- 
+2.3.5
+
