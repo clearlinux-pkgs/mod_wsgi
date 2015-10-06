@@ -5,7 +5,7 @@
 %define keepstatic 1
 Name     : mod_wsgi
 Version  : 4.4.13
-Release  : 16
+Release  : 17
 URL      : https://github.com/GrahamDumpleton/mod_wsgi/archive/4.4.13.tar.gz
 Source0  : https://github.com/GrahamDumpleton/mod_wsgi/archive/4.4.13.tar.gz
 Summary  : No detailed summary available
@@ -62,7 +62,8 @@ make V=1  %{?_smp_mflags}
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost
-py.test-2.7 --verbose; py.test-3.4 --verbose;
+PYTHONPATH=%{buildroot}/usr/lib/python2.7/site-packages py.test-2.7 --verbose
+PYTHONPATH=%{buildroot}/usr/lib/python3.5/site-packages py.test-3.5 --verbose
 
 %install
 rm -rf %{buildroot}
