@@ -4,10 +4,10 @@
 #
 %define keepstatic 1
 Name     : mod_wsgi
-Version  : 4.4.13
+Version  : 4.4.22
 Release  : 17
-URL      : https://github.com/GrahamDumpleton/mod_wsgi/archive/4.4.13.tar.gz
-Source0  : https://github.com/GrahamDumpleton/mod_wsgi/archive/4.4.13.tar.gz
+URL      : https://github.com/GrahamDumpleton/mod_wsgi/archive/4.4.22.tar.gz
+Source0  : https://github.com/GrahamDumpleton/mod_wsgi/archive/4.4.22.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Apache-2.0
@@ -18,9 +18,14 @@ BuildRequires : apr-util-dev
 BuildRequires : httpd-dev
 BuildRequires : pbr
 BuildRequires : pip
+BuildRequires : pluggy
+BuildRequires : py-python
+BuildRequires : pytest
 BuildRequires : python-dev
 BuildRequires : python3-dev
 BuildRequires : setuptools
+BuildRequires : tox
+BuildRequires : virtualenv
 Patch1: 0001-default-WSGI-configuration-for-httpd.patch
 
 %description
@@ -51,19 +56,12 @@ lib components for the mod_wsgi package.
 
 
 %prep
-%setup -q -n mod_wsgi-4.4.13
+%setup -q -n mod_wsgi-4.4.22
 %patch1 -p1
 
 %build
 %configure
 make V=1  %{?_smp_mflags}
-
-%check
-export http_proxy=http://127.0.0.1:9/
-export https_proxy=http://127.0.0.1:9/
-export no_proxy=localhost
-PYTHONPATH=%{buildroot}/usr/lib/python2.7/site-packages py.test-2.7 --verbose
-PYTHONPATH=%{buildroot}/usr/lib/python3.5/site-packages py.test-3.5 --verbose
 
 %install
 rm -rf %{buildroot}
