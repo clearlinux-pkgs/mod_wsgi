@@ -4,10 +4,10 @@
 #
 %define keepstatic 1
 Name     : mod_wsgi
-Version  : 4.4.22
-Release  : 17
-URL      : https://github.com/GrahamDumpleton/mod_wsgi/archive/4.4.22.tar.gz
-Source0  : https://github.com/GrahamDumpleton/mod_wsgi/archive/4.4.22.tar.gz
+Version  : 4.4.23
+Release  : 18
+URL      : https://github.com/GrahamDumpleton/mod_wsgi/archive/4.4.23.tar.gz
+Source0  : https://github.com/GrahamDumpleton/mod_wsgi/archive/4.4.23.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Apache-2.0
@@ -56,7 +56,7 @@ lib components for the mod_wsgi package.
 
 
 %prep
-%setup -q -n mod_wsgi-4.4.22
+%setup -q -n mod_wsgi-4.4.23
 %patch1 -p1
 
 %build
