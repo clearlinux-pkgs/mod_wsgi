@@ -5,7 +5,7 @@
 %define keepstatic 1
 Name     : mod_wsgi
 Version  : 4.4.23
-Release  : 18
+Release  : 19
 URL      : https://github.com/GrahamDumpleton/mod_wsgi/archive/4.4.23.tar.gz
 Source0  : https://github.com/GrahamDumpleton/mod_wsgi/archive/4.4.23.tar.gz
 Summary  : No detailed summary available
@@ -60,6 +60,13 @@ lib components for the mod_wsgi package.
 %patch1 -p1
 
 %build
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -fno-semantic-interposition -flto -falign-functions=32 "
+export FCFLAGS="$CFLAGS -O3 -fno-semantic-interposition -flto -falign-functions=32 "
+export FFLAGS="$CFLAGS -O3 -fno-semantic-interposition -flto -falign-functions=32 "
+export CXXFLAGS="$CXXFLAGS -O3 -fno-semantic-interposition -flto -falign-functions=32 "
 %configure
 make V=1  %{?_smp_mflags}
 
