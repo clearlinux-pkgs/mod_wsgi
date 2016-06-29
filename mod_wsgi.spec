@@ -4,10 +4,10 @@
 #
 %define keepstatic 1
 Name     : mod_wsgi
-Version  : 4.5.2
-Release  : 23
-URL      : https://github.com/GrahamDumpleton/mod_wsgi/archive/4.5.2.tar.gz
-Source0  : https://github.com/GrahamDumpleton/mod_wsgi/archive/4.5.2.tar.gz
+Version  : 4.5.3
+Release  : 24
+URL      : https://github.com/GrahamDumpleton/mod_wsgi/archive/4.5.3.tar.gz
+Source0  : https://github.com/GrahamDumpleton/mod_wsgi/archive/4.5.3.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Apache-2.0
@@ -56,18 +56,17 @@ lib components for the mod_wsgi package.
 
 
 %prep
-cd ..
-%setup -q -n mod_wsgi-4.5.2
+%setup -q -n mod_wsgi-4.5.3
 %patch1 -p1
 
 %build
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -fno-semantic-interposition -flto -falign-functions=32 -O3 "
-export FCFLAGS="$CFLAGS -fno-semantic-interposition -flto -falign-functions=32 -O3 "
-export FFLAGS="$CFLAGS -fno-semantic-interposition -flto -falign-functions=32 -O3 "
-export CXXFLAGS="$CXXFLAGS -fno-semantic-interposition -flto -falign-functions=32 -O3 "
+export CFLAGS="$CFLAGS -flto -falign-functions=32 -O3 -fno-semantic-interposition "
+export FCFLAGS="$CFLAGS -flto -falign-functions=32 -O3 -fno-semantic-interposition "
+export FFLAGS="$CFLAGS -flto -falign-functions=32 -O3 -fno-semantic-interposition "
+export CXXFLAGS="$CXXFLAGS -flto -falign-functions=32 -O3 -fno-semantic-interposition "
 %configure
 make V=1  %{?_smp_mflags}
 
