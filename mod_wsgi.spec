@@ -4,10 +4,10 @@
 #
 %define keepstatic 1
 Name     : mod_wsgi
-Version  : 4.5.7
-Release  : 27
-URL      : https://github.com/GrahamDumpleton/mod_wsgi/archive/4.5.7.tar.gz
-Source0  : https://github.com/GrahamDumpleton/mod_wsgi/archive/4.5.7.tar.gz
+Version  : 4.5.13
+Release  : 28
+URL      : https://github.com/GrahamDumpleton/mod_wsgi/archive/4.5.13.tar.gz
+Source0  : https://github.com/GrahamDumpleton/mod_wsgi/archive/4.5.13.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Apache-2.0
@@ -29,9 +29,6 @@ BuildRequires : virtualenv
 Patch1: 0001-default-WSGI-configuration-for-httpd.patch
 
 %description
-========
-MOD_WSGI
-========
 Overview
 --------
 The mod_wsgi package provides an Apache module that implements a WSGI
@@ -56,18 +53,16 @@ lib components for the mod_wsgi package.
 
 
 %prep
-%setup -q -n mod_wsgi-4.5.7
+%setup -q -n mod_wsgi-4.5.13
 %patch1 -p1
 
 %build
 export LANG=C
-export AR=gcc-ar
-export RANLIB=gcc-ranlib
-export NM=gcc-nm
-export CFLAGS="$CFLAGS -fno-semantic-interposition -falign-functions=32 -O3 "
-export FCFLAGS="$CFLAGS -fno-semantic-interposition -falign-functions=32 -O3 "
-export FFLAGS="$CFLAGS -fno-semantic-interposition -falign-functions=32 -O3 "
-export CXXFLAGS="$CXXFLAGS -fno-semantic-interposition -falign-functions=32 -O3 "
+export SOURCE_DATE_EPOCH=1483987337
+export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-semantic-interposition "
+export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-semantic-interposition "
+export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-semantic-interposition "
+export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-semantic-interposition "
 %configure
 make V=1  %{?_smp_mflags}
 
