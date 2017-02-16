@@ -4,10 +4,10 @@
 #
 %define keepstatic 1
 Name     : mod_wsgi
-Version  : 4.5.13
-Release  : 28
-URL      : https://github.com/GrahamDumpleton/mod_wsgi/archive/4.5.13.tar.gz
-Source0  : https://github.com/GrahamDumpleton/mod_wsgi/archive/4.5.13.tar.gz
+Version  : 4.5.14
+Release  : 29
+URL      : https://github.com/GrahamDumpleton/mod_wsgi/archive/4.5.14.tar.gz
+Source0  : https://github.com/GrahamDumpleton/mod_wsgi/archive/4.5.14.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Apache-2.0
@@ -53,12 +53,12 @@ lib components for the mod_wsgi package.
 
 
 %prep
-%setup -q -n mod_wsgi-4.5.13
+%setup -q -n mod_wsgi-4.5.14
 %patch1 -p1
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1483987337
+export SOURCE_DATE_EPOCH=1487260413
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-semantic-interposition "
@@ -67,6 +67,7 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-semantic-interposition 
 make V=1  %{?_smp_mflags}
 
 %install
+export SOURCE_DATE_EPOCH=1487260413
 rm -rf %{buildroot}
 %make_install
 ## make_install_append content
