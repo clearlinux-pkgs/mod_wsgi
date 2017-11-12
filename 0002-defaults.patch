@@ -1,0 +1,12 @@
+diff -ru mod_wsgi-4.5.20/Makefile.in mod_wsgi-4.5.20_modified/Makefile.in
+--- mod_wsgi-4.5.20/Makefile.in	2017-10-03 03:27:46.000000000 +0000
++++ mod_wsgi-4.5.20_modified/Makefile.in	2017-11-12 04:46:17.110209309 +0000
+@@ -28,7 +28,7 @@
+ all : src/server/mod_wsgi.la
+ 
+ src/server/mod_wsgi.la : $(SRCFILES)
+-	$(APXS) -c $(CPPFLAGS) $(CFLAGS) $(SRCFILES) $(LDFLAGS) $(LDLIBS)
++	$(APXS) -c $(CPPFLAGS) $(CFLAGS) $(SRCFILES) $(LDFLAGS) $(LDLIBS) $(DEFAULTFLAGS)
+ 
+ $(DESTDIR)$(LIBEXECDIR) :
+ 	mkdir -p $@
