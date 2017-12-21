@@ -4,10 +4,10 @@
 #
 %define keepstatic 1
 Name     : mod_wsgi
-Version  : 4.5.22
-Release  : 40
-URL      : https://github.com/GrahamDumpleton/mod_wsgi/archive/4.5.22.tar.gz
-Source0  : https://github.com/GrahamDumpleton/mod_wsgi/archive/4.5.22.tar.gz
+Version  : 4.5.24
+Release  : 41
+URL      : https://github.com/GrahamDumpleton/mod_wsgi/archive/4.5.24.tar.gz
+Source0  : https://github.com/GrahamDumpleton/mod_wsgi/archive/4.5.24.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Apache-2.0
@@ -56,7 +56,7 @@ lib components for the mod_wsgi package.
 
 
 %prep
-%setup -q -n mod_wsgi-4.5.22
+%setup -q -n mod_wsgi-4.5.24
 %patch1 -p1
 %patch2 -p1
 
@@ -65,7 +65,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1511101674
+export SOURCE_DATE_EPOCH=1513877110
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
@@ -74,7 +74,7 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semanti
 make  %{?_smp_mflags} DEFAULTFLAGS="$CFLAGS"
 
 %install
-export SOURCE_DATE_EPOCH=1511101674
+export SOURCE_DATE_EPOCH=1513877110
 rm -rf %{buildroot}
 %make_install
 ## make_install_append content
