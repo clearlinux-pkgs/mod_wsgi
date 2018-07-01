@@ -5,7 +5,7 @@
 %define keepstatic 1
 Name     : mod_wsgi
 Version  : 4.5.24
-Release  : 45
+Release  : 46
 URL      : https://github.com/GrahamDumpleton/mod_wsgi/archive/4.5.24.tar.gz
 Source0  : https://github.com/GrahamDumpleton/mod_wsgi/archive/4.5.24.tar.gz
 Summary  : No detailed summary available
@@ -13,6 +13,7 @@ Group    : Development/Tools
 License  : Apache-2.0
 Requires: mod_wsgi-lib
 Requires: mod_wsgi-data
+Requires: mod_wsgi-license
 BuildRequires : apr-dev
 BuildRequires : apr-util-dev
 BuildRequires : httpd-data
@@ -23,7 +24,6 @@ BuildRequires : pip
 BuildRequires : pluggy
 BuildRequires : py-python
 BuildRequires : pytest
-
 BuildRequires : python3-dev
 BuildRequires : setuptools
 BuildRequires : tox
@@ -50,9 +50,18 @@ data components for the mod_wsgi package.
 Summary: lib components for the mod_wsgi package.
 Group: Libraries
 Requires: mod_wsgi-data
+Requires: mod_wsgi-license
 
 %description lib
 lib components for the mod_wsgi package.
+
+
+%package license
+Summary: license components for the mod_wsgi package.
+Group: Default
+
+%description license
+license components for the mod_wsgi package.
 
 
 %prep
@@ -65,7 +74,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1513877110
+export SOURCE_DATE_EPOCH=1530410381
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
@@ -74,8 +83,10 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semanti
 make  %{?_smp_mflags} DEFAULTFLAGS="$CFLAGS"
 
 %install
-export SOURCE_DATE_EPOCH=1513877110
+export SOURCE_DATE_EPOCH=1530410381
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/doc/mod_wsgi
+cp LICENSE %{buildroot}/usr/share/doc/mod_wsgi/LICENSE
 %make_install
 ## make_install_append content
 install -m 0755 -d %{buildroot}/usr/share/defaults/httpd/conf.modules.d/
@@ -92,3 +103,7 @@ install -p -D -m 644 etc/httpd/conf.d/wsgi.conf  %{buildroot}/usr/share/defaults
 %files lib
 %defattr(-,root,root,-)
 /usr/lib/httpd/modules/mod_wsgi.so
+
+%files license
+%defattr(-,root,root,-)
+/usr/share/doc/mod_wsgi/LICENSE
