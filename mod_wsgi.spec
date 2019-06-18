@@ -4,10 +4,10 @@
 #
 %define keepstatic 1
 Name     : mod_wsgi
-Version  : 4.6.6
-Release  : 50
-URL      : https://github.com/GrahamDumpleton/mod_wsgi/archive/4.6.6/mod_wsgi-4.6.6.tar.gz
-Source0  : https://github.com/GrahamDumpleton/mod_wsgi/archive/4.6.6/mod_wsgi-4.6.6.tar.gz
+Version  : 4.6.7
+Release  : 51
+URL      : https://github.com/GrahamDumpleton/mod_wsgi/archive/4.6.7/mod_wsgi-4.6.7.tar.gz
+Source0  : https://github.com/GrahamDumpleton/mod_wsgi/archive/4.6.7/mod_wsgi-4.6.7.tar.gz
 Summary  : Python WSGI adapter module for Apache
 Group    : Development/Tools
 License  : Apache-2.0
@@ -62,7 +62,7 @@ license components for the mod_wsgi package.
 
 
 %prep
-%setup -q -n mod_wsgi-4.6.6
+%setup -q -n mod_wsgi-4.6.7
 %patch1 -p1
 %patch2 -p1
 
@@ -71,7 +71,8 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1560177571
+export SOURCE_DATE_EPOCH=1560880109
+export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -83,7 +84,7 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -f
 make  %{?_smp_mflags} DEFAULTFLAGS="$CFLAGS"
 
 %install
-export SOURCE_DATE_EPOCH=1560177571
+export SOURCE_DATE_EPOCH=1560880109
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/mod_wsgi
 cp LICENSE %{buildroot}/usr/share/package-licenses/mod_wsgi/LICENSE
