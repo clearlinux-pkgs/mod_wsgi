@@ -5,7 +5,7 @@
 %define keepstatic 1
 Name     : mod_wsgi
 Version  : 4.6.7
-Release  : 56
+Release  : 57
 URL      : https://github.com/GrahamDumpleton/mod_wsgi/archive/4.6.7/mod_wsgi-4.6.7.tar.gz
 Source0  : https://github.com/GrahamDumpleton/mod_wsgi/archive/4.6.7/mod_wsgi-4.6.7.tar.gz
 Summary  : No detailed summary available
