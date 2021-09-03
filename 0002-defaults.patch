@@ -1,7 +1,17 @@
-diff -ru mod_wsgi-4.5.20/Makefile.in mod_wsgi-4.5.20_modified/Makefile.in
---- mod_wsgi-4.5.20/Makefile.in	2017-10-03 03:27:46.000000000 +0000
-+++ mod_wsgi-4.5.20_modified/Makefile.in	2017-11-12 04:46:17.110209309 +0000
-@@ -28,7 +28,7 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Vinay Potluri <vinay.potluri@intel.com>
+Date: Sun, 12 Nov 2017 05:10:32 +0000
+Subject: [PATCH] defaults
+
+---
+ Makefile.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index 8ea2be2..6285ddb 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -28,7 +28,7 @@ SRCFILES = src/server/mod_wsgi.c src/server/wsgi_*.c
  all : src/server/mod_wsgi.la
  
  src/server/mod_wsgi.la : $(SRCFILES)
