@@ -4,10 +4,10 @@
 #
 %define keepstatic 1
 Name     : mod_wsgi
-Version  : 4.9.1
-Release  : 62
-URL      : https://github.com/GrahamDumpleton/mod_wsgi/archive/4.9.1/mod_wsgi-4.9.1.tar.gz
-Source0  : https://github.com/GrahamDumpleton/mod_wsgi/archive/4.9.1/mod_wsgi-4.9.1.tar.gz
+Version  : 4.9.2
+Release  : 63
+URL      : https://github.com/GrahamDumpleton/mod_wsgi/archive/4.9.2/mod_wsgi-4.9.2.tar.gz
+Source0  : https://github.com/GrahamDumpleton/mod_wsgi/archive/4.9.2/mod_wsgi-4.9.2.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Apache-2.0
@@ -62,8 +62,8 @@ license components for the mod_wsgi package.
 
 
 %prep
-%setup -q -n mod_wsgi-4.9.1
-cd %{_builddir}/mod_wsgi-4.9.1
+%setup -q -n mod_wsgi-4.9.2
+cd %{_builddir}/mod_wsgi-4.9.2
 %patch1 -p1
 %patch2 -p1
 
@@ -72,23 +72,23 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1651705888
+export SOURCE_DATE_EPOCH=1656455554
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mno-vzeroupper -mprefer-vector-width=256 "
-export FCFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mno-vzeroupper -mprefer-vector-width=256 "
-export FFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mno-vzeroupper -mprefer-vector-width=256 "
-export CXXFLAGS="$CXXFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mno-vzeroupper -mprefer-vector-width=256 "
+export CFLAGS="$CFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mprefer-vector-width=256 "
+export FCFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mprefer-vector-width=256 "
+export FFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mprefer-vector-width=256 "
+export CXXFLAGS="$CXXFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mprefer-vector-width=256 "
 %configure
 make  %{?_smp_mflags}  DEFAULTFLAGS="$CFLAGS"
 
 %install
-export SOURCE_DATE_EPOCH=1651705888
+export SOURCE_DATE_EPOCH=1656455554
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/mod_wsgi
-cp %{_builddir}/mod_wsgi-4.9.1/LICENSE %{buildroot}/usr/share/package-licenses/mod_wsgi/2b8b815229aa8a61e483fb4ba0588b8b6c491890
+cp %{_builddir}/mod_wsgi-4.9.2/LICENSE %{buildroot}/usr/share/package-licenses/mod_wsgi/2b8b815229aa8a61e483fb4ba0588b8b6c491890
 %make_install
 ## install_append content
 install -m 0755 -d %{buildroot}/usr/share/defaults/httpd/conf.modules.d/
