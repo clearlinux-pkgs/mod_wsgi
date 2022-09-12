@@ -4,10 +4,10 @@
 #
 %define keepstatic 1
 Name     : mod_wsgi
-Version  : 4.9.3
-Release  : 64
-URL      : https://github.com/GrahamDumpleton/mod_wsgi/archive/4.9.3/mod_wsgi-4.9.3.tar.gz
-Source0  : https://github.com/GrahamDumpleton/mod_wsgi/archive/4.9.3/mod_wsgi-4.9.3.tar.gz
+Version  : 4.9.4
+Release  : 65
+URL      : https://github.com/GrahamDumpleton/mod_wsgi/archive/4.9.4/mod_wsgi-4.9.4.tar.gz
+Source0  : https://github.com/GrahamDumpleton/mod_wsgi/archive/4.9.4/mod_wsgi-4.9.4.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Apache-2.0
@@ -62,8 +62,8 @@ license components for the mod_wsgi package.
 
 
 %prep
-%setup -q -n mod_wsgi-4.9.3
-cd %{_builddir}/mod_wsgi-4.9.3
+%setup -q -n mod_wsgi-4.9.4
+cd %{_builddir}/mod_wsgi-4.9.4
 %patch1 -p1
 %patch2 -p1
 
@@ -72,7 +72,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1658768728
+export SOURCE_DATE_EPOCH=1663017507
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -85,7 +85,7 @@ export CXXFLAGS="$CXXFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -fl
 make  %{?_smp_mflags}  DEFAULTFLAGS="$CFLAGS"
 
 %install
-export SOURCE_DATE_EPOCH=1658768728
+export SOURCE_DATE_EPOCH=1663017507
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/mod_wsgi
 cp %{_builddir}/mod_wsgi-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/mod_wsgi/2b8b815229aa8a61e483fb4ba0588b8b6c491890
