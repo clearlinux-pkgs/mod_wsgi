@@ -5,7 +5,7 @@
 %define keepstatic 1
 Name     : mod_wsgi
 Version  : 4.9.4
-Release  : 65
+Release  : 66
 URL      : https://github.com/GrahamDumpleton/mod_wsgi/archive/4.9.4/mod_wsgi-4.9.4.tar.gz
 Source0  : https://github.com/GrahamDumpleton/mod_wsgi/archive/4.9.4/mod_wsgi-4.9.4.tar.gz
 Summary  : No detailed summary available
@@ -25,6 +25,7 @@ BuildRequires : pypi-pluggy
 BuildRequires : pypi-pytest
 BuildRequires : pypi-tox
 BuildRequires : pypi-virtualenv
+BuildRequires : python3-dev
 Patch1: 0001-default-WSGI-configuration-for-httpd.patch
 Patch2: 0002-defaults.patch
 
@@ -72,7 +73,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1663017507
+export SOURCE_DATE_EPOCH=1666736588
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -85,10 +86,10 @@ export CXXFLAGS="$CXXFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -fl
 make  %{?_smp_mflags}  DEFAULTFLAGS="$CFLAGS"
 
 %install
-export SOURCE_DATE_EPOCH=1663017507
+export SOURCE_DATE_EPOCH=1666736588
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/mod_wsgi
-cp %{_builddir}/mod_wsgi-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/mod_wsgi/2b8b815229aa8a61e483fb4ba0588b8b6c491890
+cp %{_builddir}/mod_wsgi-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/mod_wsgi/2b8b815229aa8a61e483fb4ba0588b8b6c491890 || :
 %make_install
 ## install_append content
 install -m 0755 -d %{buildroot}/usr/share/defaults/httpd/conf.modules.d/
